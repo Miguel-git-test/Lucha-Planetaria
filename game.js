@@ -280,7 +280,7 @@ class LevelGenerator {
       }
 
       const tooClose = candidates.some(c => 
-          planets.some(p => dist(c.xp*1000, c.yp*1000, p.xp*1000, p.yp*1000) < 130)
+          planets.some(p => dist(c.xp*1000, c.yp*1000, p.xp*1000, p.yp*1000) < 85)
       );
 
       if (!tooClose) {
@@ -369,7 +369,7 @@ class Game {
     this.state = 'menu'; this.levelIdx = 0; this.planets = []; this.waves = []; this.ais = []; this.timeScale = 1;
     this.completed = new Set(JSON.parse(localStorage.getItem('mm_done') || '[]'));
     this._resize(); this._bindUI(); this._buildLevels();
-    window.addEventListener('pointerdown', e => this._onInput(e));
+    this.gameCanvas.addEventListener('pointerdown', e => this._onInput(e));
     requestAnimationFrame(t => this._loop(t));
   }
   _resize() {
@@ -382,6 +382,9 @@ class Game {
   _bindUI() {
     const $ = id => document.getElementById(id);
     $('btn-play').onclick = () => this._showScreen('levels');
+    $('btn-about').onclick = () => this._showScreen('about');
+    $('btn-about-back').onclick = () => this._showScreen('menu');
+    $('btn-levels-back').onclick = () => this._showScreen('menu');
     $('btn-pause').onclick = () => this._showScreen('paused');
     $('btn-resume').onclick = () => this._showScreen('playing');
     $('btn-speed').onclick = () => { this.timeScale = this.timeScale === 1 ? 2 : (this.timeScale === 2 ? 4 : 1); $('btn-speed').textContent = this.timeScale+'x'; };
