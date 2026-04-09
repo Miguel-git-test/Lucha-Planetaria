@@ -254,6 +254,26 @@ html, body {
 .btn-upgrade.hidden { display: none; }
 .btn-upgrade:active { transform: scale(0.9); }
 
+.hud-hint {
+  position: absolute;
+  top: 55px; /* Moved down to avoid overlapping the top HUD */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,16,0.75);
+  border: 1px solid rgba(41,171,255,0.4);
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: clamp(11px, 2.5vw, 14px);
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1px;
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 100;
+}
+.hud-hint.visible { opacity: 1; }
+
 /* ---- OVERLAY BOXES (win/lose/pause/about) ---- */
 .overlay-box {
   display: flex;
