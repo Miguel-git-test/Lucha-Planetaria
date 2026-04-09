@@ -267,14 +267,15 @@ class LevelGenerator {
       const cx = 0.5, cy = 0.5;
 
       if (nF === 2) {
-          candidates.push({ xp: cx - (rx-.25), yp: cy - (ry-.25) });
-          candidates.push({ xp: cx + (rx-.25), yp: cy + (ry-.25) });
+          candidates.push({ xp: cx - rx, yp: cy - ry });
+          candidates.push({ xp: cx + rx, yp: cy + ry });
       } else {
           for (let j = 0; j < 4; j++) {
               const ang = j * Math.PI / 2;
+              const s = Math.sin(ang), c = Math.cos(ang);
               candidates.push({
-                  xp: cx + ((rx-.25) * Math.cos(ang) - (ry-.25) * Math.sin(ang)),
-                  yp: cy + ((rx-.25) * Math.sin(ang) + (ry-.25) * Math.cos(ang))
+                  xp: cx + (rx * c - ry * s),
+                  yp: cy + (rx * s + ry * c)
               });
           }
       }

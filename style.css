@@ -213,7 +213,7 @@ html, body {
 .level-card .lock-icon { font-size: clamp(18px, 4vw, 28px); opacity: 0.5; }
 
 /* ---- HUD (game screen) ---- */
-#screen-game { align-items: flex-start; justify-content: flex-start; }
+#screen-game { align-items: flex-start; justify-content: flex-start; pointer-events: none; }
 .hud {
   width: 100%;
   display: flex;
