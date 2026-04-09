@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="theme-color" content="#000010"/>
+  <meta name="description" content="MilkyMike – a planetary strategy game"/>
+  <title>MilkyMike</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="manifest" href="manifest.json"/>
+</head>
+<body>
+
+<!-- Background canvas (always visible) -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Main game canvas -->
+<canvas id="game-canvas"></canvas>
+
+<!-- ===== MENU SCREEN ===== -->
+<div id="screen-menu" class="screen active">
+  <div class="menu-content">
+    <div class="logo-wrap">
+      <h1 class="logo">MilkyMike</h1>
+      <p class="logo-sub">PLANETARY CONQUEST</p>
+    </div>
+    <div class="menu-btns">
+      <button id="btn-play" class="btn btn-primary">PLAY</button>
+      <button id="btn-about" class="btn btn-secondary">ABOUT</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LEVEL SELECT SCREEN ===== -->
+<div id="screen-levels" class="screen">
+  <div class="levels-header">
+    <button id="btn-levels-back" class="btn-icon">&#8592;</button>
+    <h2 class="levels-title">SELECT LEVEL</h2>
+    <div></div>
+  </div>
+  <div id="levels-grid" class="levels-grid"></div>
+</div>
+
+<!-- ===== GAMEPLAY HUD ===== -->
+<div id="screen-game" class="screen">
+  <div class="hud">
+    <div class="hud-left">
+      <button id="btn-pause" class="btn-icon hud-btn">&#9646;&#9646;</button>
+      <button id="btn-speed" class="btn btn-speed">1x</button>
+    </div>
+    <span id="hud-level" class="hud-level"></span>
+    <div id="hud-right">
+      <button id="btn-upgrade" class="btn btn-upgrade hidden">UPG 10</button>
+    </div>
+    <div id="hud-hint" class="hud-hint"></div>
+  </div>
+</div>
+
+<!-- ===== PAUSE SCREEN ===== -->
+<div id="screen-pause" class="screen overlay-dark">
+  <div class="overlay-box">
+    <h2 class="overlay-title">PAUSED</h2>
+    <button id="btn-resume" class="btn btn-primary">RESUME</button>
+    <button id="btn-pause-menu" class="btn btn-secondary">MENU</button>
+  </div>
+</div>
+
+<!-- ===== WIN SCREEN ===== -->
+<div id="screen-win" class="screen overlay-dark">
+  <div class="overlay-box win-box">
+    <div class="win-icon">&#127775;</div>
+    <h2 class="overlay-title win-title">SECTOR CONQUERED</h2>
+    <button id="btn-next" class="btn btn-primary">NEXT LEVEL</button>
+    <button id="btn-win-menu" class="btn btn-secondary">MENU</button>
+  </div>
+</div>
+
+<!-- ===== LOSE SCREEN ===== -->
+<div id="screen-lose" class="screen overlay-dark">
+  <div class="overlay-box">
+    <div class="lose-icon">&#128128;</div>
+    <h2 class="overlay-title lose-title">ELIMINATED</h2>
+    <button id="btn-retry" class="btn btn-primary">RETRY</button>
+    <button id="btn-lose-menu" class="btn btn-secondary">MENU</button>
+  </div>
+</div>
+
+<!-- ===== ABOUT SCREEN ===== -->
+<div id="screen-about" class="screen overlay-dark">
+  <div class="overlay-box">
+    <h2 class="overlay-title">MILKYMIKE</h2>
+    <p class="about-text">A planetary conquest game.<br/>Inspired by Auralux.<br/><br/>Tap your planet → tap a target<br/>to send your fleet.<br/><br/>Capture all planets to win!</p>
+    <button id="btn-about-back" class="btn btn-primary">BACK</button>
+  </div>
+</div>
+
+<!-- Version watermark -->
+<div id="version-tag">v1.0</div>
+
+<!-- Rotate notice (portrait only) -->
+<div id="rotate-notice">
+  <div class="rotate-content">
+    <div class="rotate-icon">&#8635;</div>
+    <p>Rotate your device to landscape</p>
+  </div>
+</div>
+
+<script src="game.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW Registration Failed', err));
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "MilkyMike: Planetary Conquest",
+  "short_name": "MilkyMike",
+  "description": "A minimalist planetary strategy game inspired by Auralux.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#000010",
+  "theme_color": "#000010",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
